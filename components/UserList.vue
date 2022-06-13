@@ -35,7 +35,8 @@
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                   {{ user.status }}
                 </td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                  v-on:click="deleteUser(user.id)">
                   delete
                 </td>
               </tr>
@@ -59,13 +60,37 @@ export default Vue.extend({
   },
   data() {
     return {
-      users: [{
-        name: 'John Doe',
-        email: 'john@example.com',
-        gender: 'Male',
-        status: 'active',
-      }] as User[],
+      users: [] as User[],
     };
   },
+  props: {
+    doRefetch: {
+      type: Boolean,
+      default: false,
+    }
+  },
+  watch: {
+    doRefetch: {
+      immediate: false,
+      handler(doRefetch) {
+        if (doRefetch) {
+          this.getUsers();
+        }
+      }
+    }
+  },
+  methods: {
+    async getUsers() {
+      const users = await this.$axios.$get('/');
+      this.users = users;
+    },
+    async deleteUser(id: number) {
+      await this.$axios.delete(`/${id}`);
+      await this.getUsers();
+    }
+  },
+  async mounted() {
+    await this.getUsers();
+  }
 });
 </script>

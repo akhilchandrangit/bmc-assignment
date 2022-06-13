@@ -39,10 +39,8 @@
               transition
               ease-in-out
               m-0" :class="getInputClass('gender')" name="gender" v-model="formValues.gender">
-              <option selected>Choose gender</option>
-              <option value="male">Male</option>
+              <option value="male" selected>Male</option>
               <option value="female">Female</option>
-              <option value="others">Others</option>
             </select>
           </div>
           <div class="mb-6">
@@ -62,7 +60,7 @@
             </div>
           </div>
 
-          <button type="submit"
+          <button type="submit" :disabled="isSubmitting" :class="{ 'opacity-75': isSubmitting }"
             class="text-black bg-[#FFDD00] hover:opacity-75 focus:ring-4 focus:outline-none font-medium rounded-[54px] text-sm w-full px-5 py-2.5 text-center">Save</button>
         </form>
       </div>
@@ -85,6 +83,10 @@ export default Vue.extend({
       type: Boolean,
       default: false,
     },
+    isSubmitting: {
+      type: Boolean,
+      default: false,
+    },
   },
   data: () => ({
     formErrors: {} as AddUserFormError,
@@ -92,7 +94,7 @@ export default Vue.extend({
       name: null,
       email: null,
       status: 'active',
-      gender: null
+      gender: 'male'
     } as AddUserFormValue
   }),
   methods: {

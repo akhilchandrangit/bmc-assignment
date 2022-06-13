@@ -2,8 +2,8 @@
   <div>
     <Header />
     <div class="container mx-auto">
-      <SectionHeader />
-      <UserList />
+      <SectionHeader @userAdded="onUserAdded" />
+      <UserList :doRefetch="fetchUsers" />
     </div>
   </div>
 </template>
@@ -16,10 +16,18 @@ import UserList from '~/components/UserList.vue'
 
 export default Vue.extend({
   name: 'IndexPage',
+  data: () => ({
+    fetchUsers: false,
+  }),
   components: {
     Header,
     SectionHeader,
     UserList,
   },
+  methods: {
+    onUserAdded() {
+      this.fetchUsers = true;
+    }
+  }
 })
 </script>

@@ -14,10 +14,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import Button from '~/components/Button.vue'
 import AddUserPopup from '~/components/AddUserPopup.vue'
+import type { AddUserFormValue } from '~/types/form';
 
 export default Vue.extend({
   name: 'NuxtSectionHeader',
@@ -26,11 +27,17 @@ export default Vue.extend({
     AddUserPopup,
   },
   data: () => ({
-    showPopup: true,
+    showPopup: false,
+    isSubmitting: true,
   }),
   methods: {
-    addUser(data) {
-      console.log(data);
+    async addUser(data: AddUserFormValue) {
+      const { name, email, gender, status } = data;
+      this.isSubmitting = true;
+      await this.$axios.post('/', { name, email, gender, status });
+      this.isSubmitting = false;
+      this.$emit('userAdded');
+      this.showPopup = false;
     }
   }
 });

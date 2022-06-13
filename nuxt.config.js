@@ -21,7 +21,9 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    '~/plugins/axios',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -48,9 +50,19 @@ export default {
     baseURL: '/',
   },
 
+  publicRuntimeConfig: {
+    axios: {
+      baseURL: process.env.API_BASE_URL,
+    },
+  },
+
+  env: {
+    accessToken: process.env.ACCESS_TOKEN,
+  },
+
   tailwindcss: {
     jit: true,
-    exposeConfig: true
+    exposeConfig: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
