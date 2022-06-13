@@ -38,7 +38,7 @@
                     :class="{ 'bg-green-500' : user.status === 'active', 'bg-red-500' : user.status === 'inactive'}">{{
                     user.status }}</button>
                 </td>
-                <td class="text-sm text-red-500 font-light px-6 py-4 pr-0 whitespace-nowrap"
+                <td class="text-sm text-red-500 font-light px-6 py-4 pr-0 whitespace-nowrap cursor-pointer"
                   v-on:click="deleteUser(user.id)">
                   delete
                 </td>
