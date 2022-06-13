@@ -2,7 +2,7 @@
   <div id="addUserModel" tabindex="-1" aria-hidden="true" :class="{ 'hidden': !showPopup }"
     class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
     <div class="relative p-4 w-full max-w-[525px] h-full md:h-auto m-auto">
-      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 p-9">
+      <div class="absolute bg-white rounded-lg dark:bg-gray-700 p-9 shadow-md w-full">
         <h3
           class="flex justify-center items-center w-full p-4 pt-0 rounded-t border-b-2 dark:border-gray-600 text-xl text-center font-semibold text-gray-900 dark:text-white">
           Add User
