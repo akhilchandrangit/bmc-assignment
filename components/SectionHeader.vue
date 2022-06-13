@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-between items-center py-5">
+  <div class="flex justify-between items-center py-5 lg:px-8">
     <h1 class="font-bold text-2xl">Users</h1>
-    <button type="button" v-on:click="showPopup = true"
+    <button type="button" v-on:click="showPopup = true" id="showPopup"
       class="flex items-center justify-center py-3 px-10 rounded-[48px] bg-gray-100">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 font-light" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd"

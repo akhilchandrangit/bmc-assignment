@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col">
-    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="overflow-x-auto">
       <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
         <div class="overflow-hidden">
           <table class="min-w-full">
             <thead class="bg-white border-b uppercase">
               <tr>
-                <th scope="col" class="text-sm font-normal text-gray-500 px-6 py-4 text-left">
+                <th scope="col" class="text-sm font-normal text-gray-500 px-6 py-4 pl-0 text-left">
                   Name
                 </th>
                 <th scope="col" class="text-sm font-normal text-gray-500 px-6 py-4 text-left">
@@ -18,7 +18,7 @@
                 <th scope="col" class="text-sm font-normal text-gray-500 px-6 py-4 text-left">
                   Status
                 </th>
-                <th scope="col" class="text-sm font-normal text-gray-500 px-6 py-4 text-left">
+                <th scope="col" class="text-sm font-normal text-gray-500 px-6 py-4 pr-0 text-left">
                   <span class="sr-only">Delete</span>
                 </th>
               </tr>
@@ -26,7 +26,7 @@
             <tbody>
               <tr v-for="user in users"
                 class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 capitalize">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-normal text-gray-900">{{ user.name }}</td>
+                <td class="px-6 py-4 pl-0 whitespace-nowrap text-sm font-normal text-gray-900">{{ user.name }}</td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                   {{ user.email }}
                 </td>
@@ -39,7 +39,7 @@
                     :class="{ 'bg-green-500' : user.status === 'active', 'bg-red-500' : user.status === 'inactive'}">{{
                     user.status }}</button>
                 </td>
-                <td class="text-sm text-red-500 font-light px-6 py-4 whitespace-nowrap"
+                <td class="text-sm text-red-500 font-light px-6 py-4 pr-0 whitespace-nowrap"
                   v-on:click="deleteUser(user.id)">
                   delete
                 </td>
