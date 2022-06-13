@@ -10,7 +10,7 @@
     "strict": true,
     "noEmit": true,
     "experimentalDecorators": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
@@ -22,6 +22,9 @@
       "@types/node",
       "@nuxtjs/toast"
     ]
+  },
+  "vueCompilerOptions": {
+    "experimentalDisableTemplateSupport": true
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }

@@ -10,20 +10,18 @@
       </svg>
       Add
     </button>
-    <AddUserPopup :showPopup="showPopup" @closePopup="showPopup = false" @addUser="addUser" />
+    <AddUserPopup :show-popup="showPopup" @closePopup="showPopup = false" @addUser="addUser" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Button from '~/components/Button.vue'
 import AddUserPopup from '~/components/AddUserPopup.vue'
 import type { AddUserFormValue } from '~/types/form';
 
 export default Vue.extend({
   name: 'NuxtSectionHeader',
   components: {
-    Button,
     AddUserPopup,
   },
   data: () => ({

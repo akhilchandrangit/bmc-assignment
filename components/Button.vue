@@ -14,6 +14,7 @@ export default Vue.extend({
   props: {
     text: {
       type: String,
+      default: '',
     },
     className: {
       type: String,

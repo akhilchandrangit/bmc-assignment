@@ -24,7 +24,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="user in users"
+              <tr v-for="user in users" v-bind:key="user.id"
                 class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 capitalize">
                 <td class="px-6 py-4 pl-0 whitespace-nowrap text-sm font-normal text-gray-900">{{ user.name }}</td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -34,8 +34,7 @@
                   {{ user.gender }}
                 </td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  <button
-                    class="px-4 py-2 rounded-[36px] capitalize text-white"
+                  <button class="px-4 py-2 rounded-[36px] capitalize text-white"
                     :class="{ 'bg-green-500' : user.status === 'active', 'bg-red-500' : user.status === 'inactive'}">{{
                     user.status }}</button>
                 </td>
@@ -54,14 +53,10 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Button from '~/components/Button.vue';
 import type { User } from '~/types/user';
 
 export default Vue.extend({
   name: 'NuxtTable',
-  components: {
-    Button,
-  },
   data() {
     return {
       users: [] as User[],
@@ -83,6 +78,9 @@ export default Vue.extend({
       }
     }
   },
+  async mounted() {
+    await this.getUsers();
+  },
   methods: {
     async getUsers() {
       const users = await this.$axios.$get('/');
@@ -94,8 +92,5 @@ export default Vue.extend({
       this.$toast.success('User deleted');
     }
   },
-  async mounted() {
-    await this.getUsers();
-  }
 });
 </script>
