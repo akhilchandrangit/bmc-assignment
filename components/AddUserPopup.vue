@@ -125,10 +125,10 @@ export default Vue.extend({
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email)
     },
-    getInputClass(field: string) {
+    getInputClass(field: string): Record<string, boolean> {
       const hasError = this.formErrors[field as keyof AddUserFormError];
       return {
-        'border-red-300': hasError,
+        'border-red-300': !!hasError,
         'border-gray-300': !hasError,
       };
     },
