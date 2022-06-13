@@ -37,6 +37,7 @@ export default Vue.extend({
       await this.$axios.post('/', { name, email, gender, status });
       this.isSubmitting = false;
       this.$emit('userAdded');
+      this.$toast.success('User added')
       this.showPopup = false;
     }
   }

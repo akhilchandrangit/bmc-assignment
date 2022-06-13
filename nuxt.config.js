@@ -40,6 +40,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/toast',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -61,6 +62,11 @@ export default {
   tailwindcss: {
     jit: true,
     exposeConfig: true,
+  },
+
+  toast: {
+    position: 'top-right',
+    duration: 3000,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

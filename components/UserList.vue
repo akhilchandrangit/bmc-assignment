@@ -91,6 +91,7 @@ export default Vue.extend({
     async deleteUser(id: number) {
       await this.$axios.delete(`/${id}`);
       await this.getUsers();
+      this.$toast.success('User deleted');
     }
   },
   async mounted() {
